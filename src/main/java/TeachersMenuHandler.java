@@ -1,3 +1,5 @@
+import com.sun.source.tree.ClassTree;
+
 import java.sql.*;
 
 public class TeachersMenuHandler {
@@ -60,12 +62,13 @@ public class TeachersMenuHandler {
         }
     }
 
-    public static void searchForTeacher(Connection connection, String firstNameOfTeacher) {
-        String sql = "SELECT * FROM teachers WHERE first_name = ?";
+    public static void searchForTeacher(Connection connection, String firstNameOfTeacher, String lastNameOfTeacher) {
+        String sql = "SELECT * FROM teachers WHERE first_name = ? AND last_name = ?";
         PreparedStatement stmt = null;
         try {
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, firstNameOfTeacher);
+            stmt.setString(2, lastNameOfTeacher);
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()) {
 

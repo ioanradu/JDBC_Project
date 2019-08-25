@@ -48,8 +48,8 @@ public class StudentsMenuHandler {
             stmt.setString(1, firstName);
             stmt.setString(2, lastName);
             ResultSet resultSet = stmt.executeQuery();
-            while (resultSet.next()) {
 
+            while (resultSet.next()) {
                 String firstNameToDisplay = resultSet.getString("first_name");
                 String lastnameToDisplay = resultSet.getString("last_name");
                 int ageToDisplay = resultSet.getInt("age");
